@@ -4,6 +4,7 @@ const navLinks = document.querySelectorAll(".nav-links li");
 
 btnToggle.addEventListener("click", function() {
     mobileMenu.classList.toggle("nav-active");
+    // mobileMenu.classList.toggle("hidden");
 
     navLinks.forEach((link, index) => {
         if(link.style.animation) {
