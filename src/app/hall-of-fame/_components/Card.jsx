@@ -4,7 +4,7 @@ export default function Card({ data, firstPlaceAvatar, secondPlaceAvatar, thirdP
     return(
         <div className="flex flex-col bg-white text-black rounded-md gap-5 w-full">
             <h1 className="font-bold w-full bg-gray-100 text-gray-500 pl-2">{data.season}</h1>
-            <div className="flex flex-row gap-1 w-full">
+            <div className="flex flex-row items-center justify-center backdrop:gap-1 w-full">
                 <Team
                     avatar={secondPlaceAvatar}
                     teamName={data.second_place.team}
