@@ -19,11 +19,11 @@ const navigationLinks = [
     ariaLabel: "Home"
   },
   {
-    text: "News",
-    href: "/news",
+    text: "Blog",
+    href: "/blog",
     iconOutline: "newspaper-outline",
     iconSolid: "newspaper",
-    ariaLabel: "News"
+    ariaLabel: "Blog"
   },
   {
     text: "Statistics",
