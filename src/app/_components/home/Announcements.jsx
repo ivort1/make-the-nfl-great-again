@@ -1,4 +1,3 @@
-import IonIcon from '@reacticons/ionicons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { client } from '../../../../sanity/lib/client';
@@ -25,7 +24,6 @@ export default async function Announcements() {
                     pinnedAnnouncements.map(announcement => (
                         <Link key={announcement._id} href={`/${announcement.slug.current}`} className="flex flex-row gap-2 items-center">
                             <Image src="/svg/football.svg" width={12} height={12} alt="football" />
-                            {/* <span className="text-md">&#10132;</span>  */}
                             <h1 className="underline underline-offset-2">{announcement.title}</h1>
                         </Link>
                     ))

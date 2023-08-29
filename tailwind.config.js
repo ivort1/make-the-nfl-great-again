@@ -11,10 +11,10 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        mobileNav: 'rgb(38, 57, 77) 0px 0px 30px -10px;',
-        statsCard: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;'
+        mobileNav: 'rgb(38, 57, 77) 0px 0px 30px -10px',
+        statsCard: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px'
       },
-      backdropFilter: ['hover', 'focus'], // Add hover and focus variants
+      backdropFilter: ['hover', 'focus'],
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -25,4 +25,4 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
   ],
-}
+} 

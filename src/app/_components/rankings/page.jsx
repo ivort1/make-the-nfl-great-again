@@ -65,7 +65,7 @@ export default function Page({ data }) {
             <div key={element.user_id} className="text-sm">
               <div className="w-full flex flex-row items-center justify-start gap-2">
                 {`${element.ranking}. `}
-                <Image src={avatarUrl} className={"m-0 rounded-full"} width={50} height={50} alt="avatar" />
+                <Image src={avatarUrl} className="m-0 rounded-full" width={50} height={50} alt="avatar" />
 
                 <div className="flex flex-col">
                   <span className="font-semibold">{element.team_name}</span>
