@@ -4,6 +4,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Post from '../_components/post/page';
 
+export const metadata = {
+    title: 'Make the NFL Great Again',
+    description: 'Fantasy football league founded in 2015.',
+    other: {
+      "apple-mobile-web-app-title": "Make the NFL Great Again",
+      "apple-mobile-web-app-capable": "yes",
+    }
+}
+
 async function fetchPosts() {
     const query = `*[_type == "rankings" || _type == "article" || _type == "announcement"]`;
     const data = await client.fetch(query);

@@ -3,10 +3,17 @@
 import { useContext, useState } from 'react';
 import { ThemeContext } from '../theme-provider';
 import Image from 'next/image';
-
-
 import Card from '../_components/card/Card';
 import Tab from "../_components/tab/Tab";
+
+export const metadata = {
+    title: 'Make the NFL Great Again',
+    description: 'Fantasy football league founded in 2015.',
+    other: {
+      "apple-mobile-web-app-title": "Make the NFL Great Again",
+      "apple-mobile-web-app-capable": "yes",
+    }
+}
 
 export default function Page() {
     const { owners, teams, statistics } = useContext(ThemeContext);
