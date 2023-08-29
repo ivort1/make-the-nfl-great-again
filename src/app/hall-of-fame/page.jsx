@@ -5,15 +5,6 @@ import { useContext } from 'react';
 import Card from './_components/Card';
 import Image from 'next/image';
 
-export const metadata = {
-    title: 'Make the NFL Great Again',
-    description: 'Fantasy football league founded in 2015.',
-    other: {
-      "apple-mobile-web-app-title": "Make the NFL Great Again",
-      "apple-mobile-web-app-capable": "yes",
-    }
-}
-
 export default function Page() {
     const { owners, teams, champions } = useContext(ThemeContext);
 

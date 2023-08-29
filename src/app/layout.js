@@ -53,7 +53,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto_mono.className} mt-6 mb-32 text-xs`}>
+      <body className={`${roboto_mono.className} mt-6 mb-32 text-sm`}>
         <ThemeProvider>
           {children}
           <Navigation data={navigationLinks}/>
