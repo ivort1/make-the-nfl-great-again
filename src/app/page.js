@@ -19,10 +19,6 @@ export default function Page() {
               The site is custom-built and you can check out the source code on <a href="https://github.com/ivort1/make-the-nfl-great-again" rel="noopener noreferrer" target="_blank" className="underline">GitHub</a>.
             </p>
 
-            <Link href="/test-route">
-              <button className="bg-red-100 px-3 py-2 text-red-500 rounded-md">Test-route</button>
-            </Link>
-
             <Champion />
 
             <Announcements />

@@ -47,6 +47,7 @@ export const metadata = {
   other: {
     "apple-mobile-web-app-title": "Make the NFL Great Again",
     "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
   }
 }
 
