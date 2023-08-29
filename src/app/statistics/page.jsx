@@ -127,7 +127,7 @@ export default function Page() {
 
             <div className="w-[90%] flex flex-row items-center gap-3">
                 <label className="font-semibold text-gray-400" htmlFor="sortBy">Sort by:</label>
-                <select className="bg-white text-gray-400 border-solid border-2 border-gray-100 font-semibold px-4 py-2 rounded-2xl w-48" id="sortBy" value={sortBy} onChange={handleChange}>
+                <select className="bg-white text-gray-400 border-solid border-2 border-gray-100 font-semibold px-4 py-2 rounded-2xl h-9 w-48" id="sortBy" value={sortBy} onChange={handleChange}>
                     {
                         sortByOptions.map(element => (
                             <option key={element} value={element}>{element}</option>
