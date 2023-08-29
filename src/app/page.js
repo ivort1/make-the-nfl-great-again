@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Champion from './_components/home/Champion';
 import Announcements from './_components/home/Announcements';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -17,6 +18,10 @@ export default function Page() {
             <p className="w-[90%]">
               The site is custom-built and you can check out the source code on <a href="https://github.com/ivort1/make-the-nfl-great-again" rel="noopener noreferrer" target="_blank" className="underline">GitHub</a>.
             </p>
+
+            <Link href="/test-route">
+              <button className="bg-red-100 px-3 py-2 text-red-500 rounded-md">Test-route</button>
+            </Link>
 
             <Champion />
 
