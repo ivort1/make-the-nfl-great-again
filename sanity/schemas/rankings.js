@@ -18,6 +18,11 @@ export default {
         },
       },
       {
+        name: 'tags',
+        type: 'string',
+        title: 'Tag(s)',
+      },
+      {
         name: 'season',
         type: 'string',
         title: 'Season'

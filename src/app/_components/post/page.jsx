@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Page({ type, title, createdAt }) {
+export default function Page({ tags, title, createdAt }) {
 
     function formatDate(createdAt) {
         const date = new Date(createdAt);
@@ -14,12 +14,15 @@ export default function Page({ type, title, createdAt }) {
 
     let svgName;
 
-    switch(type) {
+    switch(tags) {
         case("rankings"):
             svgName = "lightning";
             break;
-        case("article"):
-            svgName = "referee"
+        case("rules"):
+            svgName = "referee";
+            break;
+        default:
+            svgName = "football_colored";
     }
 
     return(

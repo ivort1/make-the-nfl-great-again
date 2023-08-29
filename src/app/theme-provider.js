@@ -18,6 +18,9 @@ export const ThemeProvider =({ children }) => {
     const [teams, setTeams] = useState([]);
     const [statistics, setStatistics] = useState([]);
     const [champions, setChampions] = useState([]);
+    const [seasonStatistics, setSeasonStatistics] = useState([]);
+    const [seasonRankings, setSeasonRankings] = useState([]);
+    const [currentChampion, setCurrentChampion] = useState([]);
 
     useEffect(() => {
         fetchDataFromSupabase();
@@ -25,26 +28,32 @@ export const ThemeProvider =({ children }) => {
 
     async function fetchDataFromSupabase() {
         try {
-        const [leagueData, ownersData, teamsData, statisticsData, championsData] = await Promise.all([
-            supabase.from("league").select(),
-            supabase.from("owner").select(),
-            supabase.from("team").select(),
-            supabase.from("statistics").select(),
-            supabase.from("champions").select()
-        ]);
+            const [leagueData, ownersData, teamsData, statisticsData, championsData, seasonStatisticsData, seasonRankingsData, currentChampionData] = await Promise.all([
+                supabase.from("league").select(),
+                supabase.from("owner").select(),
+                supabase.from("team").select(),
+                supabase.from("statistics").select(),
+                supabase.from("champions").select(),
+                supabase.from("season_2023_statistics").select(),
+                supabase.from("season_2023_rankings").select(),
+                supabase.from('league_champion_info').select('*').eq('league_uid', process.env.NEXT_PUBLIC_LEAGUE_UID)
+            ]);
 
-        setLeague(leagueData.data);
-        setOwners(ownersData.data);
-        setTeams(teamsData.data);
-        setStatistics(statisticsData.data);
-        setChampions(championsData.data);
+            setLeague(leagueData.data);
+            setOwners(ownersData.data);
+            setTeams(teamsData.data);
+            setStatistics(statisticsData.data);
+            setChampions(championsData.data);
+            setSeasonStatistics(seasonStatisticsData.data);
+            setSeasonRankings(seasonRankingsData.data);
+            setCurrentChampion(currentChampionData.data);
         } catch(error) {
-        console.log(error);
+            console.log(error);
         }
     }
 
     return(
-        <ThemeContext.Provider value={{league, owners, teams, statistics, champions, fetchDataFromSupabase}}>
+        <ThemeContext.Provider value={{league, owners, teams, statistics, champions, seasonStatistics, seasonRankings, currentChampion, fetchDataFromSupabase}}>
             {children}
         </ThemeContext.Provider>
     )

@@ -1,8 +1,8 @@
 // schemas/pet.js
 export default {
-    name: 'article',
+    name: 'announcement',
     type: 'document',
-    title: 'Article',
+    title: 'Announcement',
     fields: [
       {
         name: 'title',
@@ -21,6 +21,11 @@ export default {
         name: 'tags',
         type: 'string',
         title: 'Tag(s)',
+      },
+      {
+        name: 'pin',
+        type: 'boolean',
+        title: 'Pin'
       },
       {
         name: 'season',

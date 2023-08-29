@@ -4,15 +4,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Post from '../_components/post/page';
 
-async function getDataFromSanity() {
-    const query = `*[_type == "rankings" || _type=="article"]`;
+async function fetchPosts() {
+    const query = `*[_type == "rankings" || _type == "article" || _type == "announcement"]`;
     const data = await client.fetch(query);
-
     return data;
 }
 
 export default async function Page() {
-    const data = await getDataFromSanity();
+    const posts = await fetchPosts();
 
     return(
         <div className="w-full flex flex-col items-center justify-center gap-7">
@@ -26,11 +25,20 @@ export default async function Page() {
             </p>
 
             {
-                data.map(post => (
+                posts.length > 0 ?
+                posts.sort((a, b) => b._createdAt - a._createdAt).map(post => (
                     <Link key={post._id} href={`/blog/${post.slug.current}`} className="w-[90%]">
-                        <Post type={post._type} title={post.title} createdAt={post._createdAt} />
+                        <Post tags={post.tags} title={post.title} createdAt={post._createdAt} />
                     </Link>
                 ))
+                :
+                <div className="mt-7 mx-auto text-gray-500 flex flex-row items-center w-3/4">
+                    <Image src="/svg/strategy.svg" width={50} height={50} alt="football strategy" />
+                    <div className="ml-5">
+                        Nothing posted yet.
+                        <br />Check back later!
+                    </div>
+                </div>
             }
         </div>
     );

@@ -117,8 +117,6 @@ export default function Page() {
                 The 2015 and 2016 statistics are unavailable and not included in these calculations.
             </p>
            
-
-           
             <div className="flex flex-row gap-5 w-[90%]">
                 {
                     tabs.map((element, index) => (
