@@ -1,20 +1,13 @@
+import { getAnnouncements } from '../../../../sanity/sanity-utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { client } from '../../../../sanity/lib/client';
-
-async function fetchAnnouncements() {
-    const revalidate = 60;
-    const query = `*[_type == "announcement"]`;
-    const data = await client.fetch(query, {next: {revalidate}});
-    return data;
-}
 
 export default async function Announcements() {
-    const announcements = await fetchAnnouncements();
+    const announcements = await getAnnouncements();
     const pinnedAnnouncements = announcements.filter(announcement => announcement.pin === true);
 
     return(
-        <div className="mt-5 w-[90%] flex flex-col gap-4">
+        <div className="my-5 w-[90%] flex flex-col gap-4">
               <div className="flex flex-row items-center justify-start gap-2 h-1/6">
                   <h3 className="text-red-500 text-base font-semibold">Announcements</h3>
                   <Image src="/svg/megaphone.svg" width={25} height={25} alt="megaphone" />

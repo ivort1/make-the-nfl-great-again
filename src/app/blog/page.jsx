@@ -1,17 +1,10 @@
-import { client } from '../../../sanity/lib/client';
+import { getPosts } from '../../../sanity/sanity-utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import Post from '../_components/post/page';
 
-async function fetchPosts() {
-    const revalidate = 60;
-    const query = `*[_type == "rankings" || _type == "article" || _type == "announcement"]`;
-    const data = await client.fetch(query, {next: {revalidate}});
-    return data;
-}
-
 export default async function Page() {
-    const posts = await fetchPosts();
+    const posts = await getPosts();
 
     return(
         <div className="w-full flex flex-col items-center justify-center gap-7">

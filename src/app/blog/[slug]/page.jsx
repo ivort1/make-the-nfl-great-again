@@ -1,15 +1,9 @@
-import { client } from '../../../../sanity/lib/client';
+import { getPost } from '../../../../sanity/sanity-utils';
 import Article from '../../_components/article/page';
 import Rankings from '../../_components/rankings/page';
 
-async function getData(slug) {
-  const query = `*[(_type == "article" || _type== "rankings" || _type== "announcement") && slug.current == "${slug}"][0]`;
-  const data = await client.fetch(query);
-  return data;
-}
-
 export default async function SlugPage({ params }) {
-  const data = (await getData(params.slug));
+  const data = await getPost(params.slug);
 
   return (
     <>
