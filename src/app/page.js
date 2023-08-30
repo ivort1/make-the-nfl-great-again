@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Champion from './_components/home/Champion';
 import Announcements from './_components/home/Announcements';
-import Link from 'next/link';
 
 export default function Page() {
   return (

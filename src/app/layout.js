@@ -41,19 +41,10 @@ const navigationLinks = [
   }
 ];
 
-export const metadata = {
-  title: 'Make the NFL Great Again',
-  description: 'Fantasy football league founded in 2015.',
-  other: {
-    "apple-mobile-web-app-title": "Make the NFL Great Again",
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "default",
-  }
-}
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <link rel="manifest" href="/manifest.json"></link>
       <body className={`${roboto_mono.className} mt-6 mb-32 text-sm`}>
         <ThemeProvider>
           {children}

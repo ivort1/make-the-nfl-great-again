@@ -6,7 +6,7 @@ export default function Card({ owner, team, statistics, data}) {
 
     return(
         <div className="bg-white text-black p-8 rounded-md shadow-statsCard w-[90%] flex flex-col items-center justify-center gap-6">
-            <div className="flex flex-row gap-3 items-center">
+            <div className="flex flex-row items-center justify-start gap-3 w-full">
                 <Image src={avatarUrl} width={60} height={60} alt="avatar" className="rounded-full" />
                 <div className="flex flex-col w-5/6">
                     <h1 className="font-bold">{team.team_name}</h1>
