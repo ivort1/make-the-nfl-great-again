@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { client } from '../../../../sanity/lib/client';
 
 async function fetchAnnouncements() {
-  const query = `*[_type == "announcement"]`;
-  const data = await client.fetch(query);
-  return data;
+    const revalidate = 60;
+    const query = `*[_type == "announcement"]`;
+    const data = await client.fetch(query, {next: {revalidate}});
+    return data;
 }
 
 export default async function Announcements() {

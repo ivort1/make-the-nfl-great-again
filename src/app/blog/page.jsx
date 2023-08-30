@@ -4,8 +4,9 @@ import Image from 'next/image';
 import Post from '../_components/post/page';
 
 async function fetchPosts() {
+    const revalidate = 60;
     const query = `*[_type == "rankings" || _type == "article" || _type == "announcement"]`;
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, {next: {revalidate}});
     return data;
 }
 
