@@ -1,11 +1,11 @@
 {
-    "theme_color": "#EA4444",
-    "background_color": "#ffffff",
+    "theme_color": "#FFFFFF",
+    "background_color": "#EA4444",
     "display": "fullscreen",
     "start_url": "/",
     "name": "Make the NFL Great Again",
     "description": "Fantasy football league founded in 2015.",
-    "short_name": "Make the NFL Great Again",
+    "short_name": "MNFLGA",
     "icons": [
         {
             "src": "/icon-192x192.png",
