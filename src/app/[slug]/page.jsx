@@ -8,12 +8,3 @@ export default async function SlugPage({ params }) {
     data && <Article data={data} />
   );
 }
-
-export async function getStaticProps() {
-  const data = await getAnnouncement();
-
-  return {
-    props: { data },
-    revalidate: 30
-  }
-}

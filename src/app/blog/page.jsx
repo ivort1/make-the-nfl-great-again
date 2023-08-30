@@ -36,12 +36,3 @@ export default async function Page() {
         </div>
     );
 }
-
-export async function getStaticProps() {
-    const data = await getPosts();
-  
-    return {
-      props: { data },
-      revalidate: 30
-    }
-}

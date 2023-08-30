@@ -30,12 +30,3 @@ export default async function Announcements() {
         </div>
     );
 }
-
-export async function getStaticProps() {
-    const data = await getAnnouncements();
-  
-    return {
-      props: { data },
-      revalidate: 30
-    }
-}

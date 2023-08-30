@@ -16,12 +16,3 @@ export default async function SlugPage({ params }) {
     </>
   );
 }
-
-export async function getStaticProps() {
-  const data = await getPost();
-
-  return {
-    props: { data },
-    revalidate: 30
-  }
-}
