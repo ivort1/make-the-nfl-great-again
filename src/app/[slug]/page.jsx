@@ -1,16 +1,19 @@
-import { client } from '../../../sanity/lib/client';
+import { getAnnouncement } from '../../../sanity/sanity-utils';
 import Article from '../_components/article/page';
 
-async function getData(slug) {
-  const query = `*[_type == "announcement" && slug.current == "${slug}"][0]`;
-  const data = await client.fetch(query);
-  return data;
-}
-
 export default async function SlugPage({ params }) {
-  const data = (await getData(params.slug));
+  const data = await getAnnouncement(params.slug);
 
   return (
-    <Article data={data} />
+    data && <Article data={data} />
   );
+}
+
+export async function getStaticProps() {
+  const data = await getAnnouncement();
+
+  return {
+    props: { data },
+    revalidate: 30
+  }
 }
