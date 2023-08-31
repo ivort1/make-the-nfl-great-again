@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <link rel="manifest" href="/manifest.json"></link>
-      <body className={`${roboto_mono.className} mt-6 mb-36 text-sm`}>
+      <body className={`${roboto_mono.className} mt-6 mb-32 text-sm`}>
         <ThemeProvider>
           {children}
           <Navigation data={navigationLinks}/>
