@@ -10,25 +10,25 @@ export default function Navigation({ data }) {
     return(
         <div className="
             bg-white
-            bottom-6
+            border-t-2
+            border-solid
+            border-gray-200
+            bottom-0
             fixed
-            h-16
-            left-1/2
-            rounded-2xl
-            shadow-mobileNav
+            h-24
             text-black
-            transform -translate-x-1/2
-            w-[95%]
+            w-full
             z-[9999]
             flex
-            flex-row">
+            flex-row
+            justify-around">
             
             {
                 data.map((link) => {
                     const isActive = pathname === link.href;
 
                     return(
-                        <Link href={link.href} className="text-2xl flex items-center justify-center flex-1" key={link.text}>
+                        <Link href={link.href} className="h-fit mt-3 text-2xl flex flex-row items-center justify-center" key={link.text}>
                             <IonIcon
                                 className={isActive ? "text-red-500" : "text-gray-400"}
                                 name={isActive ? link.iconSolid : link.iconOutline}/>

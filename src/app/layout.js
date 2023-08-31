@@ -50,7 +50,6 @@ export default function RootLayout({ children }) {
           {children}
           <Navigation data={navigationLinks}/>
 
-          <div className="fixed inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent backdrop-blur-sm h-[4%] z-[9998]"></div>
         </ThemeProvider>
       </body>
     </html>
