@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import fetch from 'node-fetch';
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
@@ -12,12 +11,10 @@ export async function GET() {
             supabase.from("user").select()
         ]);
 
-        users = users.data;
+        users = users.data.filter(user => user.active);
     } catch(error) {
         console.log(error);
     }
-
-    console.log(users);
 
   return NextResponse.json(users);
 }

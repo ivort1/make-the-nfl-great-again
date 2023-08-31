@@ -6,35 +6,35 @@ import Card from './_components/Card';
 import Image from 'next/image';
 
 export default function Page() {
-    const { owners, teams, champions } = useContext(ThemeContext);
+    const { users, champions } = useContext(ThemeContext);
 
     const championshipTeams = champions.map(champion => {
-        const firstPlaceOwner = owners.find(owner => owner.user_id === champion.first_place_user_id);
-        const secondPlaceOwner = owners.find(owner => owner.user_id === champion.second_place_user_id);
-        const thirdPlaceOwner = owners.find(owner => owner.user_id === champion.third_place_user_id);
+        const firstPlaceOwner = users.find(user => user.user_id === champion.first_place_user_id);
+        const secondPlaceOwner = users.find(user => user.user_id === champion.second_place_user_id);
+        const thirdPlaceOwner = users.find(user => user.user_id === champion.third_place_user_id);
       
-        const firstPlaceTeam = teams.find(team => team.user_id === champion.first_place_user_id);
-        const secondPlaceTeam = teams.find(team => team.user_id === champion.second_place_user_id);
-        const thirdPlaceTeam = teams.find(team => team.user_id === champion.third_place_user_id);
+        const firstPlaceTeam = users.find(user => user.user_id === champion.first_place_user_id);
+        const secondPlaceTeam = users.find(user => user.user_id === champion.second_place_user_id);
+        const thirdPlaceTeam = users.find(user => user.user_id === champion.third_place_user_id);
       
         return {
             season: champion.season,
             first_place: {
                 first_name: firstPlaceOwner.first_name,
                 last_name: firstPlaceOwner.last_name,
-                team: firstPlaceTeam.team_name,
+                team: firstPlaceTeam.team_name ? firstPlaceTeam.team_name : `Team ${firstPlaceTeam.display_name}`,
                 avatar: firstPlaceTeam.avatar
             },
             second_place: {
                 first_name: secondPlaceOwner.first_name,
                 last_name: secondPlaceOwner.last_name,
-                team: secondPlaceTeam.team_name,
+                team: secondPlaceTeam.team_name ? secondPlaceTeam.team_name : `Team ${secondPlaceTeam.display_name}`,
                 avatar: secondPlaceTeam.avatar
             },
             third_place: {
                 first_name: thirdPlaceOwner.first_name,
                 last_name: thirdPlaceOwner.last_name,
-                team: thirdPlaceTeam.team_name,
+                team: thirdPlaceTeam.team_name ? thirdPlaceTeam.team_name : `Team ${thirdPlaceTeam.display_name}`,
                 avatar: thirdPlaceTeam.avatar
             }
         };

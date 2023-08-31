@@ -7,7 +7,7 @@ export default async function Announcements() {
     const pinnedAnnouncements = announcements.filter(announcement => announcement.pin === true);
 
     return(
-        <div className="my-5 w-[90%] flex flex-col gap-4">
+        <div className="mt-5 mb-7 w-[90%] flex flex-col gap-4">
               <div className="flex flex-row items-center justify-start gap-2 h-1/6">
                   <h3 className="text-red-500 text-base font-semibold">Announcements</h3>
                   <Image src="/svg/megaphone.svg" width={25} height={25} alt="megaphone" />

@@ -21,6 +21,7 @@ export const ThemeProvider =({ children }) => {
     const [seasonStatistics, setSeasonStatistics] = useState([]);
     const [seasonRankings, setSeasonRankings] = useState([]);
     const [currentChampion, setCurrentChampion] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         fetchDataFromSupabase();
@@ -28,7 +29,7 @@ export const ThemeProvider =({ children }) => {
 
     async function fetchDataFromSupabase() {
         try {
-            const [leagueData, ownersData, teamsData, statisticsData, championsData, seasonStatisticsData, seasonRankingsData, currentChampionData] = await Promise.all([
+            const [leagueData, ownersData, teamsData, statisticsData, championsData, seasonStatisticsData, seasonRankingsData, currentChampionData, userData] = await Promise.all([
                 supabase.from("league").select(),
                 supabase.from("owner").select(),
                 supabase.from("team").select(),
@@ -36,7 +37,8 @@ export const ThemeProvider =({ children }) => {
                 supabase.from("champions").select(),
                 supabase.from("season_2023_statistics").select(),
                 supabase.from("season_2023_rankings").select(),
-                supabase.from('league_champion_info').select('*').eq('league_uid', process.env.NEXT_PUBLIC_LEAGUE_UID)
+                supabase.from('league_champion_info').select('*').eq('league_uid', process.env.NEXT_PUBLIC_LEAGUE_UID),
+                supabase.from("user").select(),
             ]);
 
             setLeague(leagueData.data);
@@ -47,13 +49,14 @@ export const ThemeProvider =({ children }) => {
             setSeasonStatistics(seasonStatisticsData.data);
             setSeasonRankings(seasonRankingsData.data);
             setCurrentChampion(currentChampionData.data);
+            setUsers(userData.data);
         } catch(error) {
             console.log(error);
         }
     }
 
     return(
-        <ThemeContext.Provider value={{league, owners, teams, statistics, champions, seasonStatistics, seasonRankings, currentChampion, fetchDataFromSupabase}}>
+        <ThemeContext.Provider value={{league, owners, teams, statistics, champions, seasonStatistics, seasonRankings, currentChampion, users, fetchDataFromSupabase}}>
             {children}
         </ThemeContext.Provider>
     )

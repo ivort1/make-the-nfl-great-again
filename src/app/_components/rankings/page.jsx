@@ -6,7 +6,7 @@ import { ThemeContext } from '../../theme-provider';
 import { useContext } from 'react';
 
 export default function Page({ data }) {
-  const { owners, teams, seasonStatistics, seasonRankings } = useContext(ThemeContext);
+  const { users, seasonStatistics, seasonRankings } = useContext(ThemeContext);
 
   function formatDate(createdAt) {
     const date = new Date(createdAt);
@@ -17,23 +17,22 @@ export default function Page({ data }) {
 
   const date = formatDate(data._createdAt);
 
-  function organizeData(data, owners, teams, statistics, rankings) {
+  function organizeData(data, users, statistics, rankings) {
     let array = [];
 
     for(let x = 1; x <= 10; x++) {
-      const owner = owners.filter(owner => owner.active).find(owner => owner.user_id === data[`Ranking_${x}`]);
-      const team = teams.find(team => team.user_id === data[`Ranking_${x}`]);
+      const user = users.filter(user => user.active).find(user => user.user_id === data[`Ranking_${x}`]);
       const stats = statistics.find(stats => stats.user_id === data[`Ranking_${x}`]);
       const ranking = rankings.find(ranking => ranking.user_id === data[`Ranking_${x}`])
 
-      if(owner) {
+      if(user) {
         array.push(
           {
-            user_id: owner.user_id,
-            first_name: owner.first_name,
-            last_name: owner.last_name,
-            team_name: team.team_name,
-            avatar: team.avatar,
+            user_id: user.user_id,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            team_name: user.team_name ? user.team_name : `Team ${user.display_name}`,
+            avatar: user.avatar,
             wins: stats.wins,
             losses: stats.losses,
             ties: stats.ties,
@@ -48,7 +47,7 @@ export default function Page({ data }) {
     return array;
   }
 
-  const organizedData = organizeData(data, owners, teams, seasonStatistics, seasonRankings);
+  const organizedData = organizeData(data, users, seasonStatistics, seasonRankings);
 
   return (
     <article className="mx-auto w-[90%] flex flex-col gap-12">

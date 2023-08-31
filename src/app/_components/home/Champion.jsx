@@ -5,13 +5,13 @@ import { ThemeContext } from '../../theme-provider';
 import Image from 'next/image';
 
 export default function Champion() {
-    const { currentChampion } = useContext(ThemeContext);
-    
-    let champion = {};
+    const { league, users } = useContext(ThemeContext);
+
+    const champion = users.find(user => user.user_id === league[0].current_champion);
+
     let avatarSrc = "";
 
-    if (currentChampion[0] && Object.keys(currentChampion[0]).length > 0) {
-        champion = currentChampion[0];
+    if (champion) {
         avatarSrc = champion.avatar.startsWith("https://") ? champion.avatar : `https://sleepercdn.com/avatars/${champion.avatar}`;
     }
 
@@ -24,8 +24,8 @@ export default function Champion() {
                     <Image src="/svg/trophy.svg" width={40} height={40} alt="trophy" className="absolute z-50 bottom-0 left-14 drop-shadow-md" />
                     {avatarSrc && <Image src={avatarSrc} className="border-solid border-4 border-[#FFE02F] h-auto rounded-full mt-3" width={80} height={80} alt="avatar" />}
                 </div>
-                <h1 className="mt-2 font-semibold">{champion.team_name}</h1>
-                <h3 className="text-gray-400">{`${champion.first_name} ${champion.last_name}`}</h3>
+                <h1 className="mt-2 font-semibold">{champion?.team_name}</h1>
+                <h3 className="text-gray-400">{`${champion?.first_name} ${champion?.last_name}`}</h3>
             </div>
         </div>
     );
