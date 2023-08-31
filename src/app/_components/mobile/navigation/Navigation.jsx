@@ -15,7 +15,7 @@ export default function Navigation({ data }) {
             border-gray-200
             bottom-0
             fixed
-            h-24
+            h-20
             text-black
             w-full
             z-[9999]
