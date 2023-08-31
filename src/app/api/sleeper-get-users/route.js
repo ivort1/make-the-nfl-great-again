@@ -6,8 +6,8 @@ export async function GET() {
   const response = await fetch(`https://api.sleeper.app/v1/league/${process.env.NEXT_PUBLIC_SLEEPER_LEAGUE_ID}/users`);
   const data = await response.json();
   let users = [];
-  
-  if(data.length > 0) {
+
+  if(data && data.length > 0) {
     users = data.map(user => (
       {
         user_id: user.user_id,
