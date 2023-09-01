@@ -4,27 +4,54 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import IonIcon from '@reacticons/ionicons';
 
-export default function Navigation({ data }) {
+export default function Navigation() {
     const pathname = usePathname();
+
+    const navigationLinks = [
+        {
+          text: "Home",
+          href: "/",
+          iconOutline: "home-outline",
+          iconSolid: "home",
+          ariaLabel: "Home"
+        },
+        {
+          text: "Blog",
+          href: "/blog",
+          iconOutline: "newspaper-outline",
+          iconSolid: "newspaper",
+          ariaLabel: "Blog"
+        },
+        {
+          text: "Statistics",
+          href: "/statistics",
+          iconOutline: "stats-chart-outline",
+          iconSolid: "stats-chart",
+          ariaLabel: "Statistics"
+        },
+        {
+          text: "Hall of Fame",
+          href: "/hall-of-fame",
+          iconOutline: "trophy-outline",
+          iconSolid: "trophy",
+          ariaLabel: "Hall of Fame"
+        }
+      ];
 
     return(
         <div className="
             bg-white
-            border-t-2
+            border-t
             border-solid
             border-gray-200
-            bottom-0
-            fixed
-            h-[10%]
             text-black
             w-full
-            z-[9999]
             flex
             flex-row
             justify-around">
-            
+
             {
-                data.map((link) => {
+                navigationLinks.map((link) => {
                     const isActive = pathname === link.href;
 
                     return(

@@ -9,33 +9,29 @@ export default function Page() {
     const { users, champions } = useContext(ThemeContext);
 
     const championshipTeams = champions.map(champion => {
-        const firstPlaceOwner = users.find(user => user.user_id === champion.first_place_user_id);
-        const secondPlaceOwner = users.find(user => user.user_id === champion.second_place_user_id);
-        const thirdPlaceOwner = users.find(user => user.user_id === champion.third_place_user_id);
-      
-        const firstPlaceTeam = users.find(user => user.user_id === champion.first_place_user_id);
-        const secondPlaceTeam = users.find(user => user.user_id === champion.second_place_user_id);
-        const thirdPlaceTeam = users.find(user => user.user_id === champion.third_place_user_id);
+        const firstPlaceUser = users.find(user => user.user_id === champion.first_place_user_id);
+        const secondPlaceUser = users.find(user => user.user_id === champion.second_place_user_id);
+        const thirdPlaceUser = users.find(user => user.user_id === champion.third_place_user_id);
       
         return {
             season: champion.season,
             first_place: {
-                first_name: firstPlaceOwner.first_name,
-                last_name: firstPlaceOwner.last_name,
-                team: firstPlaceTeam.team_name ? firstPlaceTeam.team_name : `Team ${firstPlaceTeam.display_name}`,
-                avatar: firstPlaceTeam.avatar
+                first_name: firstPlaceUser.first_name,
+                last_name: firstPlaceUser.last_name,
+                team: firstPlaceUser.team_name,
+                avatar: firstPlaceUser.avatar
             },
             second_place: {
-                first_name: secondPlaceOwner.first_name,
-                last_name: secondPlaceOwner.last_name,
-                team: secondPlaceTeam.team_name ? secondPlaceTeam.team_name : `Team ${secondPlaceTeam.display_name}`,
-                avatar: secondPlaceTeam.avatar
+                first_name: secondPlaceUser.first_name,
+                last_name: secondPlaceUser.last_name,
+                team: secondPlaceUser.team_name,
+                avatar: secondPlaceUser.avatar
             },
             third_place: {
-                first_name: thirdPlaceOwner.first_name,
-                last_name: thirdPlaceOwner.last_name,
-                team: thirdPlaceTeam.team_name ? thirdPlaceTeam.team_name : `Team ${thirdPlaceTeam.display_name}`,
-                avatar: thirdPlaceTeam.avatar
+                first_name: thirdPlaceUser.first_name,
+                last_name: thirdPlaceUser.last_name,
+                team: thirdPlaceUser.team_name,
+                avatar: thirdPlaceUser.avatar
             }
         };
     }).sort((a, b) => b.season - a.season);
@@ -58,9 +54,9 @@ export default function Page() {
           
                 {
                     championshipTeams.map(element => {
-                        let firstPlaceAvatarUrl = element.first_place?.avatar && element.first_place?.avatar.startsWith("https://") ? element.first_place?.avatar : `https://sleepercdn.com/avatars/${element.first_place?.avatar}`;
-                        let secondPlaceAvatarUrl = element.second_place?.avatar && element.second_place?.avatar.startsWith("https://") ? element.second_place?.avatar : `https://sleepercdn.com/avatars/${element.second_place?.avatar}`;
-                        let thirdPlaceAvatarUrl = element.third_place?.avatar && element.third_place?.avatar.startsWith("https://") ? element.third_place?.avatar : `https://sleepercdn.com/avatars/${element.third_place?.avatar}`;
+                        let firstPlaceAvatarUrl = element.first_place.avatar;
+                        let secondPlaceAvatarUrl = element.second_place.avatar;
+                        let thirdPlaceAvatarUrl = element.third_place.avatar;
 
                         return (
                             <Card
