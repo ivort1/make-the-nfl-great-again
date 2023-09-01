@@ -39,7 +39,7 @@ export default function Navigation() {
       ];
 
     return(
-        <>
+        <div className="h-[10%] fixed bottom-0 w-full bg-red-500 z-[9999] flex flex-row justify-around">
             {
                 navigationLinks.map((link) => {
                     const isActive = pathname === link.href;
@@ -47,12 +47,12 @@ export default function Navigation() {
                     return(
                         <Link href={link.href} className="h-fit mt-3 text-2xl flex flex-row items-center justify-center" key={link.text}>
                             <IonIcon
-                                className={isActive ? "text-red-500" : "text-gray-400"}
+                                className="text-white"
                                 name={isActive ? link.iconSolid : link.iconOutline}/>
                         </Link>
                     );
                 })
             }
-        </>
+        </div>
     );
 }
