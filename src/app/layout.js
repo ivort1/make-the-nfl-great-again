@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
             <div className="h-[90%] overflow-y-scroll py-7">
               {children}
             </div>
-            <div className="h-[10%] fixed bottom-0 w-full">
+            <div className="h-[10%] absolute bottom-0 w-full bg-white border-t border-solid border-gray-200 z-[9999] flex flex-row justify-around">
               <Navigation />
             </div>
           </div>

@@ -39,16 +39,7 @@ export default function Navigation() {
       ];
 
     return(
-        <div className="
-            bg-white
-            border-t
-            border-solid
-            border-gray-200
-            text-black
-            flex
-            flex-row
-            justify-around">
-
+        <>
             {
                 navigationLinks.map((link) => {
                     const isActive = pathname === link.href;
@@ -62,6 +53,6 @@ export default function Navigation() {
                     );
                 })
             }
-        </div>
+        </>
     );
 }
