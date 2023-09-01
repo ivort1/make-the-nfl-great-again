@@ -45,10 +45,9 @@ export default function Navigation() {
                     const isActive = pathname === link.href;
 
                     return(
-                        <Link href={link.href} className="h-fit mt-3 text-2xl flex flex-row items-center justify-center" key={link.text}>
-                            <IonIcon
-                                className="text-white"
-                                name={isActive ? link.iconSolid : link.iconOutline}/>
+                        <Link href={link.href} className="relative h-fit flex flex-col items-center justify-start" key={link.text}>
+                            {isActive && <div className='absolute top-0 h-[2px] bg-white w-10'></div>}
+                            <IonIcon className="h-fit mt-3 text-2xl text-white" name={isActive ? link.iconSolid : link.iconOutline}/>
                         </Link>
                     );
                 })
