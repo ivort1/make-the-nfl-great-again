@@ -45,7 +45,6 @@ export default function Navigation() {
             border-solid
             border-gray-200
             text-black
-            w-full
             flex
             flex-row
             justify-around">
