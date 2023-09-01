@@ -118,14 +118,14 @@ export default function Page() {
             <div className="flex flex-row gap-5 w-[90%]">
                 {
                     tabs.map((element, index) => (
-                        <Tab css={index === activeIndex ? "bg-red-100 text-red-500 border-solid border-2 border-red-100" : "bg-white text-gray-400 border-solid border-2 border-gray-100"} key={element} text={element} onClick={() => setIndexAndSelect(index)}/>
+                        <Tab css={index === activeIndex ? "bg-red-100 text-red-500 border-solid border-2 border-red-100" : "text-gray-400 border-solid border-2 border-gray-200"} key={element} text={element} onClick={() => setIndexAndSelect(index)}/>
                     ))
                 }
             </div>
 
             <div className="w-[90%] flex flex-row items-center gap-3">
                 <label className="font-semibold text-gray-400" htmlFor="sortBy">Sort by:</label>
-                <select className="bg-white text-gray-400 border-solid border-2 border-gray-100 font-semibold px-4 py-2 rounded-2xl h-9 w-48" id="sortBy" value={sortBy} onChange={handleChange}>
+                <select className="bg-slate-100 text-gray-400 border-solid border-2 border-gray-200 font-semibold px-4 py-2 rounded-2xl h-9 w-48" id="sortBy" value={sortBy} onChange={handleChange}>
                     {
                         sortByOptions.map(element => (
                             <option key={element} value={element}>{element}</option>

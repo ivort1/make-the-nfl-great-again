@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <link rel="manifest" href="/manifest.json"></link>
       <body className={`${roboto_mono.className}`}>
         <ThemeProvider>
-          <div className="h-[100vh] text-sm">
+          <div className="h-[100vh] text-sm bg-slate-100">
             <div className="h-[90%] overflow-y-scroll py-7">
               {children}
             </div>
