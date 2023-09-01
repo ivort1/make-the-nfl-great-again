@@ -2,8 +2,8 @@ import Team from "./Team";
 
 export default function Card({ data, firstPlaceAvatar, secondPlaceAvatar, thirdPlaceAvatar }) {
     return(
-        <div className="flex flex-col bg-white text-black rounded-md gap-5 w-full">
-            <h1 className="font-bold w-full bg-gray-100 text-gray-500 pl-2">{data.season}</h1>
+        <div className="flex flex-col items-center justify-center text-black rounded-md w-full gap-3">
+            <h1 className="font-bold w-full bg-gray-200 text-gray-500 pl-2 text-xs">{data.season}</h1>
             <div className="flex flex-row items-center justify-center backdrop:gap-1 text-xs w-full">
                 <Team
                     avatar={secondPlaceAvatar}

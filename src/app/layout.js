@@ -10,47 +10,19 @@ const roboto_mono = Roboto_Mono({
   display: "swap"
 });
 
-const navigationLinks = [
-  {
-    text: "Home",
-    href: "/",
-    iconOutline: "home-outline",
-    iconSolid: "home",
-    ariaLabel: "Home"
-  },
-  {
-    text: "Blog",
-    href: "/blog",
-    iconOutline: "newspaper-outline",
-    iconSolid: "newspaper",
-    ariaLabel: "Blog"
-  },
-  {
-    text: "Statistics",
-    href: "/statistics",
-    iconOutline: "stats-chart-outline",
-    iconSolid: "stats-chart",
-    ariaLabel: "Statistics"
-  },
-  {
-    text: "Hall of Fame",
-    href: "/hall-of-fame",
-    iconOutline: "trophy-outline",
-    iconSolid: "trophy",
-    ariaLabel: "Hall of Fame"
-  }
-];
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <link rel="manifest" href="/manifest.json"></link>
-      <body className={`${roboto_mono.className} mt-6 mb-36 text-sm`}>
+      <body className={`${roboto_mono.className}`}>
         <ThemeProvider>
-          {children}
-          <Navigation data={navigationLinks}/>
-
-          <div className="fixed inset-x-0 bottom-0 bg-gradient-to-t from-white to-transparent backdrop-blur-sm h-[4%] z-[9998]"></div>
+          <div className="h-[100vh] text-sm bg-slate-100">
+            <div className="h-[90%] overflow-y-scroll py-7">
+              {children}
+            </div>
+         
+            <Navigation />
+          </div>
         </ThemeProvider>
       </body>
     </html>

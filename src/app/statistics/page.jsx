@@ -7,13 +7,13 @@ import Card from '../_components/card/Card';
 import Tab from "../_components/tab/Tab";
 
 export default function Page() {
-    const { owners, teams, statistics } = useContext(ThemeContext);
+    const { users, statistics } = useContext(ThemeContext);
 
     const [activeIndex, setActiveIndex] = useState(0);
     const tabs = ["Wins/Losses", "Points", "Playoffs"];
     const [sortByOptions, setSortByOptions] = useState(["Wins", "Losses", "Ties", "Win %", "Avg wins"]);
     const [sortBy, setSortBy] = useState(sortByOptions[0]);
-    const sortedOwners = sortStatistics();
+    const sortedUsers = sortStatistics();
 
     function setIndexAndSelect(index) {
         const activeIndex = index;
@@ -31,7 +31,7 @@ export default function Page() {
     }
 
     function sortStatistics() {
-        return [...owners.filter(owner => owner.active)].sort((a, b) => {
+        return [...users.filter(user => user.active)].sort((a, b) => {
             const aStatistics = statistics.find(stat => stat.user_id === a.user_id);
             const bStatistics = statistics.find(stat => stat.user_id === b.user_id);
     
@@ -118,14 +118,14 @@ export default function Page() {
             <div className="flex flex-row gap-5 w-[90%]">
                 {
                     tabs.map((element, index) => (
-                        <Tab css={index === activeIndex ? "bg-red-100 text-red-500 border-solid border-2 border-red-100" : "bg-white text-gray-400 border-solid border-2 border-gray-100"} key={element} text={element} onClick={() => setIndexAndSelect(index)}/>
+                        <Tab css={index === activeIndex ? "bg-red-100 text-red-500 border-solid border-2 border-red-100" : "text-gray-400 border-solid border-2 border-gray-200"} key={element} text={element} onClick={() => setIndexAndSelect(index)}/>
                     ))
                 }
             </div>
 
             <div className="w-[90%] flex flex-row items-center gap-3">
                 <label className="font-semibold text-gray-400" htmlFor="sortBy">Sort by:</label>
-                <select className="bg-white text-gray-400 border-solid border-2 border-gray-100 font-semibold px-4 py-2 rounded-2xl h-9 w-48" id="sortBy" value={sortBy} onChange={handleChange}>
+                <select className="bg-slate-100 text-gray-400 border-solid border-2 border-gray-200 font-semibold px-4 py-2 rounded-2xl h-9 w-48" id="sortBy" value={sortBy} onChange={handleChange}>
                     {
                         sortByOptions.map(element => (
                             <option key={element} value={element}>{element}</option>
@@ -135,29 +135,28 @@ export default function Page() {
             </div>
 
             {
-                sortedOwners.map(owner => {
-                    const ownerStatistics = statistics.find(stat => stat.user_id === owner.user_id);
-                    const ownerTeam = teams.find(team => team.user_id === owner.user_id);
+                sortedUsers.map(user => {
+                    const userStatistics = statistics.find(stat => stat.user_id === user.user_id);
 
                     const wins = [];
-                    wins.push({title: "Wins", stat: ownerStatistics?.total_wins});
-                    wins.push({title: "Losses", stat: ownerStatistics?.total_losses});
-                    wins.push({title: "Ties", stat: ownerStatistics?.total_ties});
-                    wins.push({title: "Win %", stat: ownerStatistics?.win_percentage});
-                    wins.push({title: "Avg wins", stat: ownerStatistics?.average_wins});
+                    wins.push({title: "Wins", stat: userStatistics?.total_wins});
+                    wins.push({title: "Losses", stat: userStatistics?.total_losses});
+                    wins.push({title: "Ties", stat: userStatistics?.total_ties});
+                    wins.push({title: "Win %", stat: userStatistics?.win_percentage});
+                    wins.push({title: "Avg wins", stat: userStatistics?.average_wins});
 
                     const points = [];
-                    points.push({title: "Points for", stat: ownerStatistics?.total_points_for});
-                    points.push({title: "Points against", stat: ownerStatistics?.total_points_against});
-                    points.push({title: "Avg points for", stat: ownerStatistics?.average_points_for});
-                    points.push({title: "Avg points against", stat: ownerStatistics?.average_points_against});
+                    points.push({title: "Points for", stat: userStatistics?.total_points_for});
+                    points.push({title: "Points against", stat: userStatistics?.total_points_against});
+                    points.push({title: "Avg points for", stat: userStatistics?.average_points_for});
+                    points.push({title: "Avg points against", stat: userStatistics?.average_points_against});
 
                     const playoffs = [];
-                    playoffs.push({title: "Appearances", stat: ownerStatistics?.playoff_appearances});
-                    playoffs.push({title: "Wins", stat: ownerStatistics?.playoff_wins});
-                    playoffs.push({title: "Losses", stat: ownerStatistics?.playoff_losses});
-                    playoffs.push({title: "Championships", stat: ownerStatistics?.championships});
-                    playoffs.push({title: "Last place", stat: ownerStatistics?.last_place});
+                    playoffs.push({title: "Appearances", stat: userStatistics?.playoff_appearances});
+                    playoffs.push({title: "Wins", stat: userStatistics?.playoff_wins});
+                    playoffs.push({title: "Losses", stat: userStatistics?.playoff_losses});
+                    playoffs.push({title: "Championships", stat: userStatistics?.championships});
+                    playoffs.push({title: "Last place", stat: userStatistics?.last_place});
 
                     let data = [];
                     switch(activeIndex) {
@@ -176,7 +175,7 @@ export default function Page() {
                     }
 
                     return(
-                        <Card key={owner.user_id} owner={owner} statistics={ownerStatistics} team={ownerTeam} data={data}/>
+                        <Card key={user.user_id} user={user} statistics={userStatistics} data={data}/>
                     );
                 })
             }
