@@ -7,6 +7,12 @@ import { ThemeContext } from '../../theme-provider';
 export default function Announcements() {
     const { announcements } = useContext(ThemeContext);
 
+    let pinnedAnnouncements = [];
+
+    if(announcements.length > 0) {
+        pinnedAnnouncements = announcements.filter(announcement => announcement.pin);
+    }
+
     return(
         <div className="mt-5 mb-9 w-[90%] flex flex-col gap-4">
               <div className="flex flex-row items-center justify-start gap-2 h-1/6">
@@ -15,8 +21,8 @@ export default function Announcements() {
               </div>
 
                 {
-                    announcements.length > 0 ?
-                    announcements.filter(announcement => announcement.pin).map(announcement => (
+                    pinnedAnnouncements.length > 0 ?
+                    pinnedAnnouncements.map(announcement => (
                         <Link key={announcement._id} href={`/${announcement.slug.current}`} className="flex flex-row gap-2 items-center">
                             <Image src="/svg/football.svg" width={12} height={12} alt="football" />
                             <h1 className="underline underline-offset-2">{announcement.title}</h1>
