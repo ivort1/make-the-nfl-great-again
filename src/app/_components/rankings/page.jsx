@@ -52,8 +52,8 @@ export default function Page({ data }) {
   return (
     <article className="mx-auto w-[90%] flex flex-col gap-12">
       <div>
-        <h1 className="text-lg">{data.title}</h1>
-        <h3 className="text-gray-400">{date}</h3>
+        <h1 className="text-lg font-semibold">{data.title}</h1>
+        <h3 className="text-gray-400 text-xs">{date}</h3>
       </div>
 
       {

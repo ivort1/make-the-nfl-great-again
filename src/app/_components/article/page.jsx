@@ -24,7 +24,7 @@ export default function Page({ data }) {
 
   return (
     <article className="prose mx-auto my-0 text-sm w-[90%]">
-        <h1 className="m-0 text-lg">{data.title}</h1>
+        <h1 className="m-0 text-lg font-semibold">{data.title}</h1>
         <h3 className="mt-0 mb-7 text-xs text-gray-400">{date}</h3>
         <PortableText value={data.content} />
         <Image src={`/gif/${avatarSrc}.gif`} alt={avatarSrc} width={75} height={75} className="mx-auto"/>

@@ -1,10 +1,13 @@
-import { getPosts } from '../../../sanity/sanity-utils';
+"use client"
+
 import Link from 'next/link';
 import Image from 'next/image';
 import Post from '../_components/post/page';
+import { useContext } from 'react';
+import { ThemeContext } from '../theme-provider';
 
-export default async function Page() {
-    const posts = await getPosts();
+export default function Page() {
+    const { posts } = useContext(ThemeContext);
 
     return(
         <div className="w-full flex flex-col items-center justify-center gap-7">

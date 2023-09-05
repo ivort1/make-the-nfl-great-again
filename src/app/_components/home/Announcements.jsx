@@ -1,10 +1,17 @@
-import { getAnnouncements } from '../../../../sanity/sanity-utils';
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext, useEffect } from 'react';
+import { ThemeContext } from '../../theme-provider';
 
-export default async function Announcements() {
-    const announcements = await getAnnouncements();
-    const pinnedAnnouncements = announcements.filter(announcement => announcement.pin === true);
+export default function Announcements() {
+    const { announcements } = useContext(ThemeContext);
+
+    let pinnedAnnouncements = [];
+
+    if(announcements.length > 0) {
+        pinnedAnnouncements = announcements.filter(announcement => announcement.pin);
+    }
 
     return(
         <div className="mt-5 mb-9 w-[90%] flex flex-col gap-4">
