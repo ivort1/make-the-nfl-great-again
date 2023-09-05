@@ -61,7 +61,7 @@ export const ThemeProvider =({ children }) => {
             setCurrentChampion(currentChampionData.data);
             setUsers(userData.data);
             setPosts(postsData.data[0].posts);
-            setAnnouncements(announcementsData.data[0].posts)
+            setAnnouncements(announcementsData.data[0].announcements);
         } catch(error) {
             console.log(error);
         }

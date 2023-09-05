@@ -1,14 +1,11 @@
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ThemeContext } from '../../theme-provider';
 
 export default function Announcements() {
     const { announcements } = useContext(ThemeContext);
-    let pinnedAnnouncements = [];
-
-    pinnedAnnouncements = announcements?.filter(announcement => announcement.pin === true);
 
     return(
         <div className="mt-5 mb-9 w-[90%] flex flex-col gap-4">
@@ -18,8 +15,8 @@ export default function Announcements() {
               </div>
 
                 {
-                    pinnedAnnouncements?.length > 0 ?
-                    pinnedAnnouncements.map(announcement => (
+                    announcements.length > 0 ?
+                    announcements.filter(announcement => announcement.pin).map(announcement => (
                         <Link key={announcement._id} href={`/${announcement.slug.current}`} className="flex flex-row gap-2 items-center">
                             <Image src="/svg/football.svg" width={12} height={12} alt="football" />
                             <h1 className="underline underline-offset-2">{announcement.title}</h1>

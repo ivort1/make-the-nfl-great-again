@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Post from '../_components/post/page';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { ThemeContext } from '../theme-provider';
 
 export default function Page() {
@@ -23,7 +23,7 @@ export default function Page() {
             {
                 posts.length > 0 ?
                 posts.sort((a, b) => b._createdAt - a._createdAt).map(post => (
-                    <Link key={post._id} href={`/blog/${post.slug?.current}`} className="w-[90%]">
+                    <Link key={post._id} href={`/blog/${post.slug.current}`} className="w-[90%]">
                         <Post tags={post.tags} title={post.title} createdAt={post._createdAt} />
                     </Link>
                 ))
