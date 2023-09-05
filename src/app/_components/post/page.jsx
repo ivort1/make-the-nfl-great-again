@@ -30,7 +30,7 @@ export default function Page({ tags, title, createdAt }) {
             <Image src={`/svg/${svgName}.svg`} alt={svgName} width={30} height={30} />
             <div>
                 <h1 className="font-semibold">{title}</h1>
-                <p className="text-gray-400">{date}</p>
+                <p className="text-gray-400 text-xs">{date}</p>
             </div>
         </div>
     )

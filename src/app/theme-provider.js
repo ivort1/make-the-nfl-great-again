@@ -22,6 +22,8 @@ export const ThemeProvider =({ children }) => {
     const [seasonRankings, setSeasonRankings] = useState([]);
     const [currentChampion, setCurrentChampion] = useState([]);
     const [users, setUsers] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [announcements, setAnnouncements] = useState([]);
 
     useEffect(() => {
         fetchDataFromSupabase();
@@ -29,7 +31,7 @@ export const ThemeProvider =({ children }) => {
 
     async function fetchDataFromSupabase() {
         try {
-            const [leagueData, ownersData, teamsData, statisticsData, championsData, seasonStatisticsData, seasonRankingsData, currentChampionData, userData] = await Promise.all([
+            const [leagueData, ownersData, teamsData, statisticsData, championsData, seasonStatisticsData, seasonRankingsData, currentChampionData, userData, postsData, announcementsData] = await Promise.all([
                 supabase.from("league").select(),
                 supabase.from("owner").select(),
                 supabase.from("team").select(),
@@ -39,6 +41,14 @@ export const ThemeProvider =({ children }) => {
                 supabase.from("season_2023_rankings").select(),
                 supabase.from('league_champion_info').select('*').eq('league_uid', process.env.NEXT_PUBLIC_LEAGUE_UID),
                 supabase.from("user").select(),
+                supabase
+                    .from("sanity")
+                    .select("posts")
+                    .eq('sanity_id', '37188ebf-b1ff-4710-879d-ca587beea8c5'),
+                supabase
+                    .from("sanity")
+                    .select("announcements")
+                    .eq('sanity_id', '37188ebf-b1ff-4710-879d-ca587beea8c5'),
             ]);
 
             setLeague(leagueData.data);
@@ -50,13 +60,15 @@ export const ThemeProvider =({ children }) => {
             setSeasonRankings(seasonRankingsData.data);
             setCurrentChampion(currentChampionData.data);
             setUsers(userData.data);
+            setPosts(postsData.data[0].posts);
+            setAnnouncements(announcementsData.data[0].posts)
         } catch(error) {
             console.log(error);
         }
     }
 
     return(
-        <ThemeContext.Provider value={{league, owners, teams, statistics, champions, seasonStatistics, seasonRankings, currentChampion, users, fetchDataFromSupabase}}>
+        <ThemeContext.Provider value={{league, owners, teams, statistics, champions, seasonStatistics, seasonRankings, currentChampion, users, posts, announcements, fetchDataFromSupabase}}>
             {children}
         </ThemeContext.Provider>
     )
