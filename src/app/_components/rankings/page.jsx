@@ -37,7 +37,7 @@ export default function Page({ data }) {
             losses: stats.losses,
             ties: stats.ties,
             ranking: x,
-            previous_ranking: ranking[`week_${data.Week > 1 ? data.Week - 1 : 1}`],
+            previous_ranking: ranking[`week_${data.Week > 1 ? data.Week - 1 : "-"}`],
             summary: data[`Summary_${x}`]
           }
         );
