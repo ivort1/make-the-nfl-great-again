@@ -37,7 +37,7 @@ export default function Page({ data }) {
             losses: stats.losses,
             ties: stats.ties,
             ranking: x,
-            previous_ranking: ranking[`week_${data.Week > 1 ? data.Week - 1 : 1}`],
+            previous_ranking: ranking[`week_${data.Week > 1 ? data.Week - 1 : 0}`],
             summary: data[`Summary_${x}`]
           }
         );
@@ -59,17 +59,32 @@ export default function Page({ data }) {
       {
         organizedData.sort((a, b) => b.ranking - a.ranking).map(element => {
           let avatarUrl = element.avatar && element.avatar.startsWith("https://") ? element.avatar : `https://sleepercdn.com/avatars/${element.avatar}`;
+          
+          let previousRankingText = element.previous_ranking - element.ranking;
+          let previousRankingTextColor = "text-gray-400";
+          
+          if(element.previous_ranking - element.ranking > 0) {
+            previousRankingText = `+${previousRankingText}`;
+            previousRankingTextColor = "text-green-500";
+          }
+
+          if(element.previous_ranking - element.ranking < 0) {
+            previousRankingTextColor = "text-red-500";
+          }
 
           return (
             <div key={element.user_id} className="text-sm">
               <div className="flex flex-row items-center justify-start w-full gap-2">
-                {`${element.ranking}. `}
+                {`${element.ranking}.`}
                 <Image src={avatarUrl} className="m-0 rounded-full" width={50} height={50} alt="avatar" />
 
                 <div className="flex flex-col">
                   <span className="font-semibold">{element.team_name}</span>
                   <span className="text-xs text-gray-400">{`${element.wins}-${element.losses}`}</span>
-                  <span className="text-xs text-gray-400">Previous ranking: {element.previous_ranking}</span>
+                  <div>
+                    <span className="text-xs text-gray-400">Previous ranking: {element.previous_ranking ? element.previous_ranking : "—"}</span>
+                    <span className={`text-xs ${previousRankingTextColor}`}> ({previousRankingText})</span>  
+                  </div>
                 </div>
               </div>
               <p className="mt-2">{element.summary}</p>
