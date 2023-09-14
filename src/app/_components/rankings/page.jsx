@@ -60,7 +60,7 @@ export default function Page({ data }) {
         organizedData.sort((a, b) => b.ranking - a.ranking).map(element => {
           let avatarUrl = element.avatar && element.avatar.startsWith("https://") ? element.avatar : `https://sleepercdn.com/avatars/${element.avatar}`;
           
-          let previousRankingText = element.previous_ranking - element.ranking;
+          let previousRankingText = element.previous_ranking ? element.previous_ranking - element.ranking : 0;
           let previousRankingTextColor = "text-gray-400";
           
           if(element.previous_ranking - element.ranking > 0) {
