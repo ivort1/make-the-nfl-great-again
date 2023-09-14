@@ -37,7 +37,7 @@ export default function Page({ data }) {
             losses: stats.losses,
             ties: stats.ties,
             ranking: x,
-            previous_ranking: ranking[`week_${data.Week > 0 ? data.Week - 1 : 0}`],
+            previous_ranking: ranking[`week_${data.Week > 1 ? data.Week - 1 : 1}`],
             summary: data[`Summary_${x}`]
           }
         );
@@ -53,7 +53,7 @@ export default function Page({ data }) {
     <article className="mx-auto w-[90%] flex flex-col gap-12">
       <div>
         <h1 className="text-lg font-semibold">{data.title}</h1>
-        <h3 className="text-gray-400 text-xs">{date}</h3>
+        <h3 className="text-xs text-gray-400">{date}</h3>
       </div>
 
       {
@@ -62,7 +62,7 @@ export default function Page({ data }) {
 
           return (
             <div key={element.user_id} className="text-sm">
-              <div className="w-full flex flex-row items-center justify-start gap-2">
+              <div className="flex flex-row items-center justify-start w-full gap-2">
                 {`${element.ranking}. `}
                 <Image src={avatarUrl} className="m-0 rounded-full" width={50} height={50} alt="avatar" />
 
