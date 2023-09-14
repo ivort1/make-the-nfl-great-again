@@ -8,11 +8,27 @@ import { ThemeContext } from '../theme-provider';
 
 export default function Page() {
     const { posts } = useContext(ThemeContext);
+    
+    posts.length > 0 && 
+    posts.sort((a, b) => {
+        let dateA = new Date(a._createdAt);
+        let dateB = new Date(b._createdAt);
+        
+        if (dateA < dateB) {
+          return 1;
+        }
+        
+        if (dateA > dateB) {
+          return -1;
+        }
+        
+        return 0;
+      });
 
     return(
-        <div className="w-full flex flex-col items-center justify-center gap-7">
+        <div className="flex flex-col items-center justify-center w-full gap-7">
             <div className="flex flex-row items-center justify-start gap-5 w-[90%]">
-                <h1 className="font-semibold text-lg">Blog</h1>
+                <h1 className="text-lg font-semibold">Blog</h1>
                 <Image src="/gif/news.gif" alt="newspaper" width={50} height={50}/>
             </div>
 
@@ -28,7 +44,7 @@ export default function Page() {
                     </Link>
                 ))
                 :
-                <div className="mt-7 mx-auto text-gray-500 flex flex-row items-center w-3/4">
+                <div className="flex flex-row items-center w-3/4 mx-auto text-gray-500 mt-7">
                     <Image src="/svg/strategy.svg" width={50} height={50} alt="football strategy" />
                     <div className="ml-5">
                         Nothing posted yet.
