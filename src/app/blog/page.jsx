@@ -23,7 +23,7 @@ export default function Page() {
         }
         
         return 0;
-      });
+    });
 
     return(
         <div className="flex flex-col items-center justify-center w-full gap-7">
