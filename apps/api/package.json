@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@repo/database": "workspace:*",
     "fastify": "^5.7.1"
   }
 }
