@@ -1,9 +1,9 @@
-import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import * as schema from './schema/schema'; // Import everything as 'schema'
+import * as schema from './schema/schema';
 
-// This creates a "Typed" database instance
-export const db = drizzle(process.env.DATABASE_URL!, { schema });
+export const createDb = (connectionString: string) => {
+    return drizzle(connectionString, { schema });
+}
 
-// Export the schema as well so the API can reference table names
+export type Database = ReturnType<typeof createDb>;
 export * from './schema/schema';
