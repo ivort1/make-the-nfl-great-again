@@ -55,15 +55,24 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTACT -->
-## Contact
+## Database Migration
+### DEV
+1. Ensure the postgresql database is running via Docker.
+```
+  docker compose up -d
+```
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+2. Run the `drizzle-kit push` command via pnpm
+```
+pnpm db:push
+```
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+### PROD
+The flow in production will be handled via the ci/cd pipeline.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+```
+Change schema.ts → Run db:generate → Review migration file → Commit → CI/CD runs db:migrate
+```
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
