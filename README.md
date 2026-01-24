@@ -3,9 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="https://8upload.com/image/a70c71917667b524/logo.png" alt="Logo for the Make the NFL Great Again fantasy football league" width="150" height="150">
-  </a>
 
   <h3 align="center">Make the NFL Great Again App</h3>
 </div>
