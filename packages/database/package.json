@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
+  "module": "es2022",
   "scripts": {
     "build": "tsc",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:migrate": "drizzle-kit migrate",
+    "db:seed": "npx tsx src/seed.ts",
     "db:studio": "drizzle-kit studio"
   },
   "keywords": [],
@@ -20,8 +22,8 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/pg": "^8.16.0",
     "@types/node": "25.0.10",
+    "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.8",
     "typescript": "latest"
   },

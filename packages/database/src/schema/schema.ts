@@ -1,4 +1,5 @@
 import {
+    boolean,
     decimal,
     index,
     integer,
@@ -17,6 +18,7 @@ export const owner = pgTable("owner", {
     sleeperId: varchar("sleeper_id", { length: 255 }).unique(),
     displayName: varchar("display_name", { length: 255 }).notNull(),
     avatarUrl: text("avatar_url"),
+    isActive: boolean("is_active").default(true),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
 });
@@ -27,6 +29,7 @@ export const platformEnum = pgEnum("platform_type", ["sleeper", "espn", "yahoo",
 export const season = pgTable("season", {
     id: uuid("id").primaryKey().defaultRandom(),
     year: integer("year").notNull().unique(),
+    leagueId: varchar("league_id").unique(),
     platform: platformEnum("platform").default("sleeper"),
     playoffSlots: integer("playoff_slots").notNull(),
     leagueFee: decimal("league_fee", { precision: 10, scale: 2 }).default("0.00"),
@@ -40,12 +43,14 @@ export const team = pgTable("team", {
     seasonId: uuid("season_id").notNull().references(() => season.id, { onDelete: "cascade" }),
     teamName: varchar("team_name").notNull(),
     teamPhotoUrl: text("team_photo_url"),
+    rosterId: integer("roster_id"),
     regularSeasonStanding: integer("regular_season_standing"),
     finalStanding: integer("final_standing"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow()
 }, (table) => [
     uniqueIndex("unq_idx_team_owner_id_season_id").on(table.ownerId, table.seasonId),
+    uniqueIndex("unq_idx_team_season_id_roster_id").on(table.seasonId, table.rosterId),
     index("idx_team_season_id").on(table.seasonId)
 ]);
 
