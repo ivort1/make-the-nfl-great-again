@@ -1,0 +1,2 @@
+CREATE UNIQUE INDEX "unq_idx_team_season_id_regular_season_standing" ON "team" USING btree ("season_id","regular_season_standing");--> statement-breakpoint
+CREATE UNIQUE INDEX "unq_idx_team_season_id_final_standing" ON "team" USING btree ("season_id","final_standing");
