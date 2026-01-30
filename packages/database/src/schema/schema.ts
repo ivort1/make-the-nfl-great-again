@@ -51,6 +51,8 @@ export const team = pgTable("team", {
 }, (table) => [
     uniqueIndex("unq_idx_team_owner_id_season_id").on(table.ownerId, table.seasonId),
     uniqueIndex("unq_idx_team_season_id_roster_id").on(table.seasonId, table.rosterId),
+    uniqueIndex("unq_idx_team_season_id_regular_season_standing").on(table.seasonId, table.regularSeasonStanding),
+    uniqueIndex("unq_idx_team_season_id_final_standing").on(table.seasonId, table.finalStanding),
     index("idx_team_season_id").on(table.seasonId)
 ]);
 

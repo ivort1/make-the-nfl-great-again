@@ -1,16 +1,26 @@
 {
   "name": "@repo/database",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.ts",
-  "module": "es2022",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "npx tsx src/seed.ts",
     "db:studio": "drizzle-kit studio"
+  },
+    "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./schema": {
+      "types": "./dist/schema/schema.d.ts",
+      "default": "./dist/schema/schema.js"
+    }
   },
   "keywords": [],
   "author": "Ivan Ortiz",
@@ -26,9 +36,5 @@
     "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.8",
     "typescript": "latest"
-  },
-  "exports": {
-    ".": "./src/index.ts",
-    "./schema": "./src/schema/schema.ts"
   }
 }

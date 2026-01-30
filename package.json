@@ -7,10 +7,10 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
+    "eslint": "^9.39.2",
     "prettier": "^3.2.5",
     "turbo": "^2.7.5"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@10.28.1",
   "name": "with-vite-react"
 }
