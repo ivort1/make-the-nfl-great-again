@@ -1,0 +1,90 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "HealthController_check",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Health"
+        ]
+      }
+    },
+    "/owners": {
+      "get": {
+        "operationId": "OwnersController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Owners"
+        ]
+      }
+    },
+    "/owners/{sleeperId}": {
+      "get": {
+        "operationId": "OwnersController_findOne",
+        "parameters": [
+          {
+            "name": "sleeperId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Owners"
+        ]
+      }
+    },
+    "/owners/rosters/{id}": {
+      "get": {
+        "operationId": "OwnersController_findOneStats",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Owners"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Make the NFL Great Again FFL API",
+    "description": "API schema for our private fantasy football league.",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {}
+  }
+}
