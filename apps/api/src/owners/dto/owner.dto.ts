@@ -16,6 +16,7 @@ export class CreateOwnerDto {
     @IsNotEmpty()
     id: string;
 
+    /** Sleeper ID */
     @IsString()
     @IsNotEmpty()
     sleeperId: string;
