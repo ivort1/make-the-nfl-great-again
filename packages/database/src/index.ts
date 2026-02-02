@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from './schema/schema';
-import { sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 export const createDb = (connectionString: string) => {
     return drizzle(connectionString, { schema });
@@ -8,7 +8,7 @@ export const createDb = (connectionString: string) => {
 
 export type Database = ReturnType<typeof createDb>;
 export * from './schema/schema';
-export { sql };
+export { eq, sql };
 
 // import 'dotenv/config';
 // import { Pool } from 'pg';
