@@ -5,6 +5,7 @@ import { HealthModule } from './health/health.module';
 import { OwnersModule } from './owners/owners.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
+import { SeasonsModule } from './seasons/seasons.module';
 
 
 @Module({
@@ -12,6 +13,7 @@ import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
     ConfigModule.forRoot({ isGlobal: true }),
     HealthModule,
     OwnersModule,
+    SeasonsModule,
   ],
   providers: [
     {

@@ -25,27 +25,111 @@ async function seed() {
     console.log(`✅ Inserted ${owners.length} owners`);
 
     const seasons = await db.insert(season).values([
-        { year: 2025, playoffSlots: 6, leagueFee: "100.00" },
-        { year: 2024, playoffSlots: 6, leagueFee: "100.00" },
+        { year: 2025, playoffSlots: 6, leagueFee: "100.00", leagueId: "1190420508638478336", status: "complete" },
+        { year: 2024, playoffSlots: 6, leagueFee: "100.00", leagueId: "1051226271402885120", status: "complete" },
     ]).returning();
 
     console.log(`✅ Inserted ${seasons.length} seasons`);
 
     const teams = await db.insert(team).values([
         // 2025 (seasons[0])
-        { ownerId: owners[0].id, seasonId: seasons[0].id, rosterId: 1, teamName: "DEEZ NUTS" },
-        { ownerId: owners[1].id, seasonId: seasons[0].id, rosterId: 2, teamName: "ACTION JAXSON" },
-        { ownerId: owners[2].id, seasonId: seasons[0].id, rosterId: 3, teamName: "Unsolicited Dak Pics" },
-        { ownerId: owners[3].id, seasonId: seasons[0].id, rosterId: 4, teamName: "TWoHAnD tOUcH 👐🏼" },
-        { ownerId: owners[4].id, seasonId: seasons[0].id, rosterId: 5, teamName: "Practice Squad" },
-        { ownerId: owners[5].id, seasonId: seasons[0].id, rosterId: 6, teamName: "DeshaunDontTouchdownThere" },
+        { 
+            ownerId: owners[0].id, 
+            seasonId: seasons[0].id, 
+            teamName: "DEEZ NUTS", 
+            regularSeasonStanding: 3,
+            finalStanding: 4,
+            rosterId: 1, 
+        },
+        {
+            ownerId: owners[2].id,
+            seasonId: seasons[0].id,
+            teamName: "Unsolicited Dak Pics",
+            regularSeasonStanding: 5,
+            finalStanding: 3,
+            rosterId: 3,
+        },
+        { 
+            ownerId: owners[1].id,
+            seasonId: seasons[0].id, 
+            teamName: "ACTION JAXSON",
+            regularSeasonStanding: 4,
+            finalStanding: 5,
+            rosterId: 2,
+        },
+        { 
+            ownerId: owners[3].id,
+            seasonId: seasons[0].id,
+            teamName: "TWoHAnD tOUcH 👐🏼",
+            regularSeasonStanding: 1,
+            finalStanding: 1,
+            rosterId: 4,
+        },
+        { 
+            ownerId: owners[4].id,
+            seasonId: seasons[0].id, 
+            teamName: "Practice Squad",
+            regularSeasonStanding: 2,
+            finalStanding: 2,
+            rosterId: 5, 
+        },
+        { 
+            ownerId: owners[5].id,
+            seasonId: seasons[0].id,
+            teamName: "DeshaunDontTouchdownThere",
+            regularSeasonStanding: 6,
+            finalStanding: 6,
+            rosterId: 6,
+        },
         // 2024 (seasons[1])
-        { ownerId: owners[0].id, seasonId: seasons[1].id, rosterId: 1, teamName: "DEEZ NUTS" },
-        { ownerId: owners[1].id, seasonId: seasons[1].id, rosterId: 2, teamName: "ACTION JAXSON" },
-        { ownerId: owners[2].id, seasonId: seasons[1].id, rosterId: 3, teamName: "Unsolicited Dak Pics" },
-        { ownerId: owners[3].id, seasonId: seasons[1].id, rosterId: 4, teamName: "TWoHAnD tOUcH 👐🏼" },
-        { ownerId: owners[4].id, seasonId: seasons[1].id, rosterId: 5, teamName: "Practice Squad" },
-        { ownerId: owners[5].id, seasonId: seasons[1].id, rosterId: 6, teamName: "DeshaunDontTouchdownThere" }
+        { 
+            ownerId: owners[0].id,
+            seasonId: seasons[1].id, 
+            teamName: "DEEZ NUTS" , 
+            regularSeasonStanding: 1,
+            finalStanding: 2,
+            rosterId: 1, 
+        },
+        { 
+            ownerId: owners[1].id, 
+            seasonId: seasons[1].id, 
+            teamName: "ACTION JAXSON", 
+            regularSeasonStanding: 2 ,
+            finalStanding: 3,
+            rosterId: 2, 
+        },
+        { 
+            ownerId: owners[2].id, 
+            seasonId: seasons[1].id, 
+            teamName: "Unsolicited Dak Pics", 
+            regularSeasonStanding: 3,
+            finalStanding: 4,
+            rosterId: 3, 
+        },
+        { 
+            ownerId: owners[3].id, 
+            seasonId: seasons[1].id, 
+            teamName: "TWoHAnD tOUcH 👐🏼", 
+            regularSeasonStanding: 4,
+            finalStanding: 5,
+            rosterId: 4, 
+        },
+        { 
+            ownerId: owners[4].id, 
+            seasonId: seasons[1].id, 
+            teamName: "Practice Squad", 
+            regularSeasonStanding: 5,
+            finalStanding: 6,
+            rosterId: 5, 
+        },
+        { 
+            ownerId: owners[5].id,
+            seasonId: seasons[1].id, 
+            teamName: "DeshaunDontTouchdownThere", 
+            regularSeasonStanding: 6,
+            finalStanding: 1,
+            rosterId: 6, 
+        }
     ]).returning();
 
     console.log(`✅ Inserted ${teams.length} teams`);

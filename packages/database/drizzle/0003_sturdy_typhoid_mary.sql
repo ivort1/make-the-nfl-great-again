@@ -1,0 +1,1 @@
+ALTER TABLE "season" ADD COLUMN "status" varchar(20) DEFAULT 'in_season';

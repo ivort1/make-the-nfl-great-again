@@ -25,12 +25,14 @@ export const owner = pgTable("owner", {
 
 // ----- Season -----
 export const platformEnum = pgEnum("platform_type", ["sleeper", "espn", "yahoo", "manual"]);
+export const statusEnum = pgEnum("status_type", ["pre_season", "in_season", "complete", "cancelled"]);
 
 export const season = pgTable("season", {
     id: uuid("id").primaryKey().defaultRandom(),
     year: integer("year").notNull().unique(),
     leagueId: varchar("league_id").unique(),
     platform: platformEnum("platform").default("sleeper"),
+    status: statusEnum("status").default("in_season"),
     playoffSlots: integer("playoff_slots").notNull(),
     leagueFee: decimal("league_fee", { precision: 10, scale: 2 }).default("0.00"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow()
