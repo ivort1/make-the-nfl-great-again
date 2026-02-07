@@ -44,7 +44,7 @@ export class SeasonsService {
         createdAt: season.createdAt,
         teamId: team.id,
         teamName: team.teamName,
-        finalStanding: team.finalStanding,
+        teamFinalStanding: team.finalStanding,
         ownerId: owner.id,
         ownerDisplayName: owner.displayName,
       })
@@ -67,8 +67,8 @@ export class SeasonsService {
     // Now TypeScript knows result is an array
     const rows = result as Array<typeof result[number]>;
     const seasonData = rows[0];
-    const champion = rows.find(r => r.finalStanding === 1);
-    const runnerUp = rows.find(r => r.finalStanding === 2);
+    const champion = rows.find(r => r.teamFinalStanding === 1);
+    const runnerUp = rows.find(r => r.teamFinalStanding === 2);
 
     return {
       year: seasonData.year,
